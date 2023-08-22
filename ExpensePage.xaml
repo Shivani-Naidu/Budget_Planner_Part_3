@@ -1,0 +1,90 @@
+﻿<Page x:Class="ST10084788_PROG6221_POE_PART_3.ExpensePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ST10084788_PROG6221_POE_PART_3"
+      mc:Ignorable="d"
+      Title="ExpensePage"
+      
+      
+     
+      Background="Black" Height="730" 
+        Width="811">
+
+    <Grid VerticalAlignment="Top" Height="730" 
+        Width="811" >
+
+        <!--fields for salary and tax amount-->
+
+        <TextBlock x:Name="SalaryTextBlock" Foreground="CornflowerBlue"   HorizontalAlignment="Left" FontSize="14" Margin="83,81,0,0" TextWrapping="Wrap" Text="Please Enter Your Salary Before Deductions:" VerticalAlignment="Top"/>
+        <TextBox Name ="SalaryTextBox"  Text = "{Binding salarySTR, Mode = TwoWay}"  HorizontalAlignment="Left" Margin="440,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+
+        <TextBlock x:Name="TaxTextBlock" Foreground="CornflowerBlue" HorizontalAlignment="Left" FontSize="14" Margin="83,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Please Enter Your "/><Run Language="en-za" Text="Estimated Tax Amount"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name ="TaxTextBox" Text = "{Binding taxAmountSTR, Mode = TwoWay}"  HorizontalAlignment="Left" Margin="440,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+
+        <!--fields for basic expenses-->
+
+        <TextBlock  Visibility="Hidden" x:Name="GroceriesTextBlock" Foreground="CornflowerBlue"   HorizontalAlignment="Left" FontSize="14" Margin="79,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="en-za" Text="Groceries"/><Run Text=":"/></TextBlock>
+        <TextBox Visibility="Hidden" x:Name ="GroceriesTextBox" Text = "{Binding groceriesSTR, Mode = TwoWay}" HorizontalAlignment="Center" Margin="0,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+
+        <TextBlock Visibility="Hidden" x:Name="WLTextBlock" Foreground="CornflowerBlue" HorizontalAlignment="Left" FontSize="14" Margin="79,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.525,0.086"><Run Language="en-za" Text="Water And Lights"/><Run Text=":"/></TextBlock>
+        <TextBox Visibility="Hidden" x:Name ="WLTextBox" Text = "{Binding waterAndLightsSTR, Mode = TwoWay}" HorizontalAlignment="Center" Margin="0,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+
+        <TextBlock Visibility="Hidden" x:Name="TCTextBlock" Foreground="CornflowerBlue" HorizontalAlignment="Left" FontSize="14" Margin="79,393,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="en-za" Text="Travel Costs (Including Fuel)"/><Run Text=":"/></TextBlock>
+        <TextBox Visibility="Hidden"  x:Name ="TCTextBox" Text = "{Binding travelCostsSTR, Mode = TwoWay}" HorizontalAlignment="Center" Margin="0,393,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+
+        <TextBlock Visibility="Hidden" x:Name="PBTextBlock" Foreground="CornflowerBlue"  HorizontalAlignment="Left" FontSize="14" Margin="79,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="en-za" Text="Phone Billing"/><Run Text=":"/></TextBlock>
+        <TextBox Visibility="Hidden" x:Name ="PBTextBox" Text = "{Binding telephoneSTR, Mode = TwoWay}" HorizontalAlignment="Center" Margin="0,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+
+        <!--fields for additional expenses-->
+        <CheckBox Visibility="Hidden" x:Name="YesCB" FontSize="14" Content="Yes" Foreground="CornflowerBlue" HorizontalAlignment="Left" Margin="77,594,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.103,0.596" Checked="YesCB_Checked" Unchecked="YesCB_UnChecked"/>
+        <CheckBox Visibility="Hidden" x:Name="NoCB" FontSize="14" Foreground="CornflowerBlue" Content="No" HorizontalAlignment="Left" Margin="310,594,0,0" VerticalAlignment="Top"  Checked="NoCB_Checked"  RenderTransformOrigin="0.828,4.703" />
+
+        <TextBlock Visibility="Hidden"  x:Name="ExpenseNameTBlock" FontSize="14"  HorizontalAlignment="Left" Foreground="CornflowerBlue" Margin="73,635,0,0" TextWrapping="Wrap" Text="Name Of Additional Expense:" VerticalAlignment="Top" />
+        <TextBox Visibility="Hidden"  Text="{Binding additionalExpenseNameSTR, Mode = TwoWay}" x:Name="ExpenseTBox" HorizontalAlignment="Left" Margin="290,636,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
+
+        <!--button to save basic expenses-->
+        <Button Visibility="Hidden" x:Name="BasicButton" Content="Save" FontSize="14" HorizontalAlignment="Left" Background="DimGray" Margin="310,494,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.515,1.633" Width="144" Height="35" Click="Button_Click_1"/>
+
+        <!--fields for additional expenses-->
+        <TextBlock Visibility="Hidden"  FontSize="14" x:Name="ExpenseCostTBlock"  HorizontalAlignment="Left" Foreground="CornflowerBlue" Margin="511,635,0,0" TextWrapping="Wrap" Text="Cost Of Expense:" VerticalAlignment="Top" RenderTransformOrigin="1.104,0.489"/>
+        <TextBox Visibility="Hidden"  Text="{Binding additionalExpenseCostSTR, Mode = TwoWay}"  x:Name="ExpenseCostTBox" HorizontalAlignment="Left" Margin="656,636,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+
+        <!--Textblocks to notify user if the value has been saved or is incorrect-->
+        <TextBlock Visibility="Hidden" Name="Error1" HorizontalAlignment="Left" Margin="440,104,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="310" Height="21"/>
+        <TextBlock Visibility="Hidden"  Name="Error2" HorizontalAlignment="Left" Margin="440,149,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="310" Height="22"/>
+        <TextBlock Visibility="Hidden"  Name="Error3" HorizontalAlignment="Left" Margin="310,283,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="316" Height="19"/>
+        <TextBlock Visibility="Hidden" Name="Error4" HorizontalAlignment="Left" Margin="310,355,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"  Width="386" Height="23"/>
+        <TextBlock Visibility="Hidden"  Name="Error5" HorizontalAlignment="Left" Margin="310,411,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="386"/>
+        <TextBlock Visibility="Hidden"  Name="Error6" HorizontalAlignment="Left" Margin="310,469,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="386" Height="20"/>
+
+        <!--button to add additional expenses-->
+        <Button  Visibility="Hidden" Background="DimGray" FontSize="14" x:Name="Button2" Content="Save An Additional Expense" HorizontalAlignment="Left" Margin="63,685,0,0" VerticalAlignment="Top" Width="200" Click="Button2_Click" Height="35"/>
+
+        <!--Textblocks to notify user if the value has been saved or is incorrect-->
+        <TextBlock Visibility="Hidden"  x:Name="Error7" HorizontalAlignment="Left" Margin="290,654,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="193" Height="31"/>
+        <TextBlock  Visibility="Hidden" x:Name="Error8" HorizontalAlignment="Left" Margin="656,657,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="133" Height="52"/>
+
+        <!--Button to save salary and tax amount-->
+        <Button  Content="Save" Background="DimGray" HorizontalAlignment="Left" Margin="440,176,0,0" VerticalAlignment="Top" Width="108" Height="29" Click="Button_Click_2"/>
+
+        <!--stack panels to display images-->
+        <StackPanel Background="Black" Margin="63,22,342,658" >
+            <Image Source="Icons/SalaryAndTax.jpeg"
+                   Stretch="Fill" Height="49" Width="390"/>
+        </StackPanel>
+
+        <StackPanel Visibility="Hidden" x:Name="st_basic" Background="Black" Margin="63,226,510,479" >
+            <Image Source="Icons/BasicExpenses.jpeg"
+                   Stretch="Fill" Height="29" Width="222"/>
+        </StackPanel>
+
+        <StackPanel Visibility="Hidden" x:Name="st_additional" Background="White" Margin="63,557,328,142" >
+            <Image Source="Icons/AdditionalExpenses.jpeg"
+                   Stretch="Fill" Height="32" Width="420"/>
+        </StackPanel>
+
+
+    </Grid>
+</Page>
